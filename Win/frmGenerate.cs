@@ -10,6 +10,7 @@ using StaticGeneratorCommon;
 using System.Data.SqlClient;
 using System.IO;
 using System.Collections;
+using System.Diagnostics;
 
 namespace StaticGenerator
 {
@@ -36,25 +37,28 @@ namespace StaticGenerator
             {
                 this.txtFolder.Text = Properties.Settings.Default.LastDropFolder;
             }
-            this.chkCreateIndex.Checked = Properties.Settings.Default.LastIndexChoice;
 
-            // Populate the table list
-            LoadTableList();
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.LastConnectionString))
+            {
+                this.connectionTextBox.Text = Properties.Settings.Default.LastConnectionString;
+            }
+
+            this.chkCreateIndex.Checked = Properties.Settings.Default.LastIndexChoice;
         }
 
         private void frmGenerate_Closing(Object sender, FormClosingEventArgs e)
         {
             // Save settings
+            Properties.Settings.Default.LastConnectionString = this.connectionTextBox.Text;
             Properties.Settings.Default.LastDropFolder = this.txtFolder.Text;
             Properties.Settings.Default.LastIndexChoice = this.chkCreateIndex.Checked;
             Properties.Settings.Default.Save();
         }
 
-        private void LoadTableList()
+        private void LoadTableList(string strConnectionString)
         {
             try
             {
-                string strConnectionString = ConfigurationManager.ConnectionStrings["default"].ToString();
                 Globals.ConnectionString = strConnectionString;
 
                 DataTable dtTableList = new DataTable("Tables");
@@ -165,6 +169,29 @@ namespace StaticGenerator
 
             for(int i=0; i < clbTables.Items.Count; i++)
                 clbTables.SetItemCheckState(i, state);
+        }
+
+        private void connectButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(connectionTextBox.Text))
+            {
+                MessageBox.Show("Please provide a connection string.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            LoadTableList(connectionTextBox.Text);
+        }
+
+        private void openDropFolderButton_Click(object sender, EventArgs e)
+        {
+            // Make sure the folder exists
+            if (!System.IO.Directory.Exists(this.txtFolder.Text))
+            {
+                MessageBox.Show("The selected folder does not exist. Pleas select a valid directory.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            Process.Start(txtFolder.Text);
         }
     }
 }
