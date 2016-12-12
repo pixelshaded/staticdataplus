@@ -66,6 +66,8 @@ namespace StaticGenerator
                 cdTableList.CommandText = "SELECT TABLE_NAME, TABLE_SCHEMA FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'";
                 dtTableList.Load(cdTableList.ExecuteReader(CommandBehavior.CloseConnection));
 
+                clbTables.Items.Clear();
+
                 foreach (DataRow drTableName in dtTableList.Rows)
                 {
                     clbTables.Items.Add(string.Format("[{0}].[{1}]", drTableName[1].ToString(), drTableName[0].ToString()));
