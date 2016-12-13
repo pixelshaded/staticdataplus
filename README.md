@@ -13,4 +13,5 @@ v1.0.0
 
 # Building Project
 Project was built with VS 2015
+
 Visual Studio Installer Projects Extension is required
