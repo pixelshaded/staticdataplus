@@ -58,5 +58,17 @@ namespace StaticGenerator.Properties {
                 this["LastConnectionString"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PreviousConnectionStrings {
+            get {
+                return ((string)(this["PreviousConnectionStrings"]));
+            }
+            set {
+                this["PreviousConnectionStrings"] = value;
+            }
+        }
     }
 }

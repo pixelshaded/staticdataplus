@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Collections;
 using System.Diagnostics;
+using System.Linq;
 
 namespace StaticGenerator
 {
@@ -40,16 +41,18 @@ namespace StaticGenerator
 
             if (!string.IsNullOrEmpty(Properties.Settings.Default.LastConnectionString))
             {
-                this.connectionTextBox.Text = Properties.Settings.Default.LastConnectionString;
+                this.connectionStringComboBox.Text = Properties.Settings.Default.LastConnectionString;
             }
 
             this.chkCreateIndex.Checked = Properties.Settings.Default.LastIndexChoice;
+
+            this.connectionStringComboBox.Items.AddRange(GetPreviousConnectionStrings());
         }
 
         private void frmGenerate_Closing(Object sender, FormClosingEventArgs e)
         {
             // Save settings
-            Properties.Settings.Default.LastConnectionString = this.connectionTextBox.Text;
+            Properties.Settings.Default.LastConnectionString = this.connectionStringComboBox.Text;
             Properties.Settings.Default.LastDropFolder = this.txtFolder.Text;
             Properties.Settings.Default.LastIndexChoice = this.chkCreateIndex.Checked;
             Properties.Settings.Default.Save();
@@ -74,6 +77,7 @@ namespace StaticGenerator
                 }
 
                 clbTables.Sorted = true;
+                SavePreviousConnectionString(strConnectionString);
             }
             catch (SqlException ex)
             {
@@ -175,13 +179,13 @@ namespace StaticGenerator
 
         private void connectButton_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(connectionTextBox.Text))
+            if (string.IsNullOrEmpty(connectionStringComboBox.Text))
             {
                 MessageBox.Show("Please provide a connection string.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
-            LoadTableList(connectionTextBox.Text);
+            LoadTableList(connectionStringComboBox.Text);
         }
 
         private void openDropFolderButton_Click(object sender, EventArgs e)
@@ -194,6 +198,24 @@ namespace StaticGenerator
             }
 
             Process.Start(txtFolder.Text);
+        }
+
+        private void SavePreviousConnectionString(string previousConnectionString)
+        {
+            var connections = Properties.Settings.Default.PreviousConnectionStrings.Split(',').ToList();
+            if (connections.Any(conn => string.Equals(conn, previousConnectionString)))
+            {
+                return;
+            }
+
+            connections.Add(previousConnectionString);
+            connectionStringComboBox.Items.Add(previousConnectionString);
+            Properties.Settings.Default.PreviousConnectionStrings = string.Join(",", connections.ToArray());
+        }
+
+        private string[] GetPreviousConnectionStrings()
+        {
+            return Properties.Settings.Default.PreviousConnectionStrings.Split(',');
         }
     }
 }

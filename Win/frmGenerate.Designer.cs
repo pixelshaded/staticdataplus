@@ -39,10 +39,10 @@ namespace StaticGenerator
             this.btnClose = new System.Windows.Forms.Button();
             this.chkCreateIndex = new System.Windows.Forms.CheckBox();
             this.selectAllCheckBox = new System.Windows.Forms.CheckBox();
-            this.connectionTextBox = new System.Windows.Forms.TextBox();
             this.connectButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.openDropFolderButton = new System.Windows.Forms.Button();
+            this.connectionStringComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // clbTables
@@ -51,7 +51,7 @@ namespace StaticGenerator
             this.clbTables.FormattingEnabled = true;
             this.clbTables.Location = new System.Drawing.Point(12, 110);
             this.clbTables.Name = "clbTables";
-            this.clbTables.Size = new System.Drawing.Size(361, 139);
+            this.clbTables.Size = new System.Drawing.Size(664, 229);
             this.clbTables.TabIndex = 0;
             this.clbTables.ThreeDCheckBoxes = true;
             // 
@@ -67,7 +67,7 @@ namespace StaticGenerator
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 287);
+            this.label2.Location = new System.Drawing.Point(12, 378);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 13);
             this.label2.TabIndex = 2;
@@ -75,15 +75,15 @@ namespace StaticGenerator
             // 
             // txtFolder
             // 
-            this.txtFolder.Location = new System.Drawing.Point(15, 303);
+            this.txtFolder.Location = new System.Drawing.Point(15, 394);
             this.txtFolder.Name = "txtFolder";
             this.txtFolder.ReadOnly = true;
-            this.txtFolder.Size = new System.Drawing.Size(326, 20);
+            this.txtFolder.Size = new System.Drawing.Size(629, 20);
             this.txtFolder.TabIndex = 3;
             // 
             // btnSelectFolder
             // 
-            this.btnSelectFolder.Location = new System.Drawing.Point(347, 304);
+            this.btnSelectFolder.Location = new System.Drawing.Point(650, 394);
             this.btnSelectFolder.Name = "btnSelectFolder";
             this.btnSelectFolder.Size = new System.Drawing.Size(25, 19);
             this.btnSelectFolder.TabIndex = 4;
@@ -93,7 +93,7 @@ namespace StaticGenerator
             // 
             // btnGenerateScripts
             // 
-            this.btnGenerateScripts.Location = new System.Drawing.Point(15, 370);
+            this.btnGenerateScripts.Location = new System.Drawing.Point(15, 461);
             this.btnGenerateScripts.Name = "btnGenerateScripts";
             this.btnGenerateScripts.Size = new System.Drawing.Size(121, 30);
             this.btnGenerateScripts.TabIndex = 5;
@@ -103,7 +103,7 @@ namespace StaticGenerator
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(303, 375);
+            this.btnClose.Location = new System.Drawing.Point(607, 467);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(69, 24);
             this.btnClose.TabIndex = 6;
@@ -114,7 +114,7 @@ namespace StaticGenerator
             // chkCreateIndex
             // 
             this.chkCreateIndex.AutoSize = true;
-            this.chkCreateIndex.Location = new System.Drawing.Point(15, 341);
+            this.chkCreateIndex.Location = new System.Drawing.Point(15, 432);
             this.chkCreateIndex.Name = "chkCreateIndex";
             this.chkCreateIndex.Size = new System.Drawing.Size(265, 17);
             this.chkCreateIndex.TabIndex = 7;
@@ -124,20 +124,13 @@ namespace StaticGenerator
             // selectAllCheckBox
             // 
             this.selectAllCheckBox.AutoSize = true;
-            this.selectAllCheckBox.Location = new System.Drawing.Point(15, 255);
+            this.selectAllCheckBox.Location = new System.Drawing.Point(15, 346);
             this.selectAllCheckBox.Name = "selectAllCheckBox";
             this.selectAllCheckBox.Size = new System.Drawing.Size(70, 17);
             this.selectAllCheckBox.TabIndex = 8;
             this.selectAllCheckBox.Text = "Select &All";
             this.selectAllCheckBox.UseVisualStyleBackColor = true;
             this.selectAllCheckBox.CheckedChanged += new System.EventHandler(this.selectAllCheckBox_CheckedChanged);
-            // 
-            // connectionTextBox
-            // 
-            this.connectionTextBox.Location = new System.Drawing.Point(12, 33);
-            this.connectionTextBox.Name = "connectionTextBox";
-            this.connectionTextBox.Size = new System.Drawing.Size(361, 20);
-            this.connectionTextBox.TabIndex = 9;
             // 
             // connectButton
             // 
@@ -160,7 +153,7 @@ namespace StaticGenerator
             // 
             // openDropFolderButton
             // 
-            this.openDropFolderButton.Location = new System.Drawing.Point(142, 370);
+            this.openDropFolderButton.Location = new System.Drawing.Point(142, 461);
             this.openDropFolderButton.Name = "openDropFolderButton";
             this.openDropFolderButton.Size = new System.Drawing.Size(121, 30);
             this.openDropFolderButton.TabIndex = 12;
@@ -168,15 +161,23 @@ namespace StaticGenerator
             this.openDropFolderButton.UseVisualStyleBackColor = true;
             this.openDropFolderButton.Click += new System.EventHandler(this.openDropFolderButton_Click);
             // 
+            // connectionStringComboBox
+            // 
+            this.connectionStringComboBox.FormattingEnabled = true;
+            this.connectionStringComboBox.Location = new System.Drawing.Point(12, 33);
+            this.connectionStringComboBox.Name = "connectionStringComboBox";
+            this.connectionStringComboBox.Size = new System.Drawing.Size(663, 21);
+            this.connectionStringComboBox.TabIndex = 13;
+            // 
             // frmGenerate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 412);
+            this.ClientSize = new System.Drawing.Size(687, 505);
+            this.Controls.Add(this.connectionStringComboBox);
             this.Controls.Add(this.openDropFolderButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.connectButton);
-            this.Controls.Add(this.connectionTextBox);
             this.Controls.Add(this.selectAllCheckBox);
             this.Controls.Add(this.chkCreateIndex);
             this.Controls.Add(this.btnClose);
@@ -211,9 +212,9 @@ namespace StaticGenerator
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.CheckBox chkCreateIndex;
         private System.Windows.Forms.CheckBox selectAllCheckBox;
-        private System.Windows.Forms.TextBox connectionTextBox;
         private System.Windows.Forms.Button connectButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button openDropFolderButton;
+        private System.Windows.Forms.ComboBox connectionStringComboBox;
     }
 }
