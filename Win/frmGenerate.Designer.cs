@@ -47,6 +47,9 @@ namespace StaticGenerator
             // 
             // clbTables
             // 
+            this.clbTables.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.clbTables.CheckOnClick = true;
             this.clbTables.FormattingEnabled = true;
             this.clbTables.Location = new System.Drawing.Point(12, 110);
@@ -66,6 +69,7 @@ namespace StaticGenerator
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 378);
             this.label2.Name = "label2";
@@ -75,6 +79,8 @@ namespace StaticGenerator
             // 
             // txtFolder
             // 
+            this.txtFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFolder.Location = new System.Drawing.Point(15, 394);
             this.txtFolder.Name = "txtFolder";
             this.txtFolder.ReadOnly = true;
@@ -83,6 +89,7 @@ namespace StaticGenerator
             // 
             // btnSelectFolder
             // 
+            this.btnSelectFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSelectFolder.Location = new System.Drawing.Point(650, 394);
             this.btnSelectFolder.Name = "btnSelectFolder";
             this.btnSelectFolder.Size = new System.Drawing.Size(25, 19);
@@ -93,6 +100,7 @@ namespace StaticGenerator
             // 
             // btnGenerateScripts
             // 
+            this.btnGenerateScripts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnGenerateScripts.Location = new System.Drawing.Point(15, 461);
             this.btnGenerateScripts.Name = "btnGenerateScripts";
             this.btnGenerateScripts.Size = new System.Drawing.Size(121, 30);
@@ -103,6 +111,7 @@ namespace StaticGenerator
             // 
             // btnClose
             // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.Location = new System.Drawing.Point(607, 467);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(69, 24);
@@ -113,6 +122,7 @@ namespace StaticGenerator
             // 
             // chkCreateIndex
             // 
+            this.chkCreateIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkCreateIndex.AutoSize = true;
             this.chkCreateIndex.Location = new System.Drawing.Point(15, 432);
             this.chkCreateIndex.Name = "chkCreateIndex";
@@ -123,6 +133,7 @@ namespace StaticGenerator
             // 
             // selectAllCheckBox
             // 
+            this.selectAllCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.selectAllCheckBox.AutoSize = true;
             this.selectAllCheckBox.Location = new System.Drawing.Point(15, 346);
             this.selectAllCheckBox.Name = "selectAllCheckBox";
@@ -153,6 +164,7 @@ namespace StaticGenerator
             // 
             // openDropFolderButton
             // 
+            this.openDropFolderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.openDropFolderButton.Location = new System.Drawing.Point(142, 461);
             this.openDropFolderButton.Name = "openDropFolderButton";
             this.openDropFolderButton.Size = new System.Drawing.Size(121, 30);
@@ -163,6 +175,8 @@ namespace StaticGenerator
             // 
             // connectionStringComboBox
             // 
+            this.connectionStringComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.connectionStringComboBox.FormattingEnabled = true;
             this.connectionStringComboBox.Location = new System.Drawing.Point(12, 33);
             this.connectionStringComboBox.Name = "connectionStringComboBox";
@@ -187,9 +201,7 @@ namespace StaticGenerator
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.clbTables);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
             this.Name = "frmGenerate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generate Static Data Management Scripts";
