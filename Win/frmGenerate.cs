@@ -53,7 +53,7 @@ namespace StaticGenerator
         private void frmGenerate_Closing(Object sender, FormClosingEventArgs e)
         {
             // Save settings
-            Properties.Settings.Default.LastConnectionString = this.connectionStringComboBox.Text;
+            
             Properties.Settings.Default.LastDropFolder = this.txtFolder.Text;
             Properties.Settings.Default.LastIndexChoice = this.chkCreateIndex.Checked;
             Properties.Settings.Default.Save();
@@ -203,6 +203,8 @@ namespace StaticGenerator
 
         private void SavePreviousConnectionString(string previousConnectionString)
         {
+            Properties.Settings.Default.LastConnectionString = this.connectionStringComboBox.Text;
+
             var connections = GetPreviousConnectionStrings();
             if (connections.Any(conn => string.Equals(conn, previousConnectionString)))
             {
