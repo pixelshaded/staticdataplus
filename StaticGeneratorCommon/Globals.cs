@@ -32,6 +32,11 @@ namespace StaticGeneratorCommon
             set
             {
                 _strConnectionString = value;
+                if (Connection.State != ConnectionState.Closed)
+                {
+                    Connection.Close();
+                    Connection = null;
+                }
             }
         }
 
