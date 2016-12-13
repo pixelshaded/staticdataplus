@@ -12,6 +12,7 @@ using System.IO;
 using System.Collections;
 using System.Diagnostics;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace StaticGenerator
 {
@@ -46,7 +47,7 @@ namespace StaticGenerator
 
             this.chkCreateIndex.Checked = Properties.Settings.Default.LastIndexChoice;
 
-            this.connectionStringComboBox.Items.AddRange(GetPreviousConnectionStrings());
+            this.connectionStringComboBox.Items.AddRange(GetPreviousConnectionStrings().ToArray());
         }
 
         private void frmGenerate_Closing(Object sender, FormClosingEventArgs e)
@@ -202,7 +203,7 @@ namespace StaticGenerator
 
         private void SavePreviousConnectionString(string previousConnectionString)
         {
-            var connections = Properties.Settings.Default.PreviousConnectionStrings.Split(',').ToList();
+            var connections = GetPreviousConnectionStrings();
             if (connections.Any(conn => string.Equals(conn, previousConnectionString)))
             {
                 return;
@@ -210,12 +211,12 @@ namespace StaticGenerator
 
             connections.Add(previousConnectionString);
             connectionStringComboBox.Items.Add(previousConnectionString);
-            Properties.Settings.Default.PreviousConnectionStrings = string.Join(",", connections.ToArray());
+            Properties.Settings.Default.PreviousConnectionStrings = JsonConvert.SerializeObject(connections);
         }
 
-        private string[] GetPreviousConnectionStrings()
+        private List<string> GetPreviousConnectionStrings()
         {
-            return Properties.Settings.Default.PreviousConnectionStrings.Split(',');
+            return JsonConvert.DeserializeObject<List<string>>(Properties.Settings.Default.PreviousConnectionStrings);
         }
     }
 }
