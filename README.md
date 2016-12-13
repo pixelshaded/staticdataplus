@@ -3,7 +3,7 @@ Static Data Script Generator for SQL Server
 
 A continuation of http://leon.mvps.org/TFS/StaticData.aspx
 
-Binaries are in Installers folder.
+Binaries are in Installers folder
 
 v1.0.0
 - Connection strings can be entered through UI and function similarly to SSMS (note these are saved in config file)
