@@ -18,9 +18,11 @@ namespace StaticGenerator
 {
     public partial class frmGenerate : Form
     {
+        private ConnectionStringCreator ConnectionStringManager { get; }
         public frmGenerate()
         {
             InitializeComponent();
+            ConnectionStringManager = new ConnectionStringCreator(this);
         }
 
         private void btnSelectFolder_Click(object sender, EventArgs e)
@@ -57,6 +59,12 @@ namespace StaticGenerator
             Properties.Settings.Default.LastDropFolder = this.txtFolder.Text;
             Properties.Settings.Default.LastIndexChoice = this.chkCreateIndex.Checked;
             Properties.Settings.Default.Save();
+        }
+
+        public void AddConnectionString(string connectionString)
+        {
+            connectionStringComboBox.Text = connectionString;
+            LoadTableList(connectionString);
         }
 
         private void LoadTableList(string strConnectionString)
@@ -219,6 +227,11 @@ namespace StaticGenerator
         private List<string> GetPreviousConnectionStrings()
         {
             return JsonConvert.DeserializeObject<List<string>>(Properties.Settings.Default.PreviousConnectionStrings);
+        }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            ConnectionStringManager.ShowDialog();
         }
     }
 }

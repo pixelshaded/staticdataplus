@@ -43,6 +43,7 @@ namespace StaticGenerator
             this.label3 = new System.Windows.Forms.Label();
             this.openDropFolderButton = new System.Windows.Forms.Button();
             this.connectionStringComboBox = new System.Windows.Forms.ComboBox();
+            this.editButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // clbTables
@@ -180,14 +181,25 @@ namespace StaticGenerator
             this.connectionStringComboBox.FormattingEnabled = true;
             this.connectionStringComboBox.Location = new System.Drawing.Point(12, 33);
             this.connectionStringComboBox.Name = "connectionStringComboBox";
-            this.connectionStringComboBox.Size = new System.Drawing.Size(663, 21);
+            this.connectionStringComboBox.Size = new System.Drawing.Size(582, 21);
             this.connectionStringComboBox.TabIndex = 13;
+            // 
+            // editButton
+            // 
+            this.editButton.Location = new System.Drawing.Point(601, 32);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(75, 23);
+            this.editButton.TabIndex = 14;
+            this.editButton.Text = "Add...";
+            this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // frmGenerate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(687, 505);
+            this.Controls.Add(this.editButton);
             this.Controls.Add(this.connectionStringComboBox);
             this.Controls.Add(this.openDropFolderButton);
             this.Controls.Add(this.label3);
@@ -228,5 +240,6 @@ namespace StaticGenerator
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button openDropFolderButton;
         private System.Windows.Forms.ComboBox connectionStringComboBox;
+        private System.Windows.Forms.Button editButton;
     }
 }
