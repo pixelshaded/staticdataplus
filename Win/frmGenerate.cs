@@ -229,7 +229,7 @@ namespace StaticGenerator
             return JsonConvert.DeserializeObject<List<string>>(Properties.Settings.Default.PreviousConnectionStrings);
         }
 
-        private void editButton_Click(object sender, EventArgs e)
+        private void addButton_Click(object sender, EventArgs e)
         {
             ConnectionStringManager.ShowDialog();
         }
