@@ -23,6 +23,7 @@ namespace StaticGenerator
 
         private readonly AuthenticationType InitialAuthenticationType = AuthenticationType.WindowsAuthentication;
         private const string DatabaseNameQuery = "SELECT name FROM master.sys.databases ORDER BY name";
+        private const string ApplicationName = "StaticDataScriptGenerator";
 
         public ConnectionStringManager()
         {
@@ -69,7 +70,15 @@ namespace StaticGenerator
 
         private void getDatabasesButton_Click(object sender, EventArgs e)
         {
-            var connString = string.Format("Server={0};Integrated Security=SSPI", serverNameTextBox.Text);
+            var connString = "";
+            if (authenticationComboBox.SelectedIndex == (int) AuthenticationType.WindowsAuthentication)
+            {
+                connString = string.Format("Data Source={0};Integrated Security=SSPI; Application Name={1}", serverNameTextBox.Text, ApplicationName);
+            } else if (authenticationComboBox.SelectedIndex == (int) AuthenticationType.SqlServerAuthentication)
+            {
+                connString = string.Format("Data Source={0}; User Id={1}; Password={2}; Application Name={3}", serverNameTextBox.Text, userNameTextBox.Text, passwordTextBox.Text, ApplicationName);
+            }
+
             var databases = new List<string>();
             databaseNameComboBox.Items.Clear();
 
