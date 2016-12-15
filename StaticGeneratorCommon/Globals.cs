@@ -254,6 +254,7 @@ namespace StaticGeneratorCommon
 
                 // Build sync script
                 string strUpdate = "UPDATE LiveTable SET" + Environment.NewLine;
+                var updateColumns = new List<string>();
                 foreach (DataRow myField in dtTableSchema.Rows)
                 {
 					// Don't consider calculated Columns
@@ -267,12 +268,16 @@ namespace StaticGeneratorCommon
                         !strPrimaryKeyColumns.Contains(myField[dtTableSchema.Columns["ColumnName"]].ToString()))
                     {
                         string strColumnName = myField[dtTableSchema.Columns["ColumnName"]].ToString();
-                        strUpdate += "LiveTable.[" + strColumnName + "] = tmp.[" + strColumnName + "]," + Environment.NewLine;
+                        updateColumns.Add("LiveTable.[" + strColumnName + "] = tmp.[" + strColumnName + "]," + Environment.NewLine);
                     }
                 }
+
+                strUpdate += string.Join("", updateColumns.ToArray());
+
                 // Trim trailing comma and add the rest of the script
                 strUpdate = strUpdate.Substring(0, strUpdate.Length - 3) + Environment.NewLine +
                     "FROM " + pstrTableName + " LiveTable " + Environment.NewLine + "INNER JOIN @tblTempTable tmp ON ";
+
                 string strJoinClause = "";
                 foreach (string strKey in strPrimaryKeyColumns)
                 {
@@ -280,6 +285,11 @@ namespace StaticGeneratorCommon
                 }
                 strJoinClause = strJoinClause.Substring(0, strJoinClause.Length - 5);
                 strUpdate += strJoinClause;
+
+                if (updateColumns.Count < 1)
+                {
+                    strUpdate = "-- No columns to update";
+                }
 
                 // Build delete script
                 string strNullJoin = "";
