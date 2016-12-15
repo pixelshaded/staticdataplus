@@ -40,6 +40,8 @@
             this.databaseNameLabel = new System.Windows.Forms.Label();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.getDatabasesButton = new System.Windows.Forms.Button();
+            this.testConnectionButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // serverNameTextBox
@@ -114,7 +116,7 @@
             // 
             this.databaseNameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.databaseNameComboBox.FormattingEnabled = true;
-            this.databaseNameComboBox.Location = new System.Drawing.Point(127, 181);
+            this.databaseNameComboBox.Location = new System.Drawing.Point(127, 214);
             this.databaseNameComboBox.Name = "databaseNameComboBox";
             this.databaseNameComboBox.Size = new System.Drawing.Size(240, 21);
             this.databaseNameComboBox.TabIndex = 9;
@@ -122,7 +124,7 @@
             // databaseNameLabel
             // 
             this.databaseNameLabel.AutoSize = true;
-            this.databaseNameLabel.Location = new System.Drawing.Point(22, 184);
+            this.databaseNameLabel.Location = new System.Drawing.Point(22, 217);
             this.databaseNameLabel.Name = "databaseNameLabel";
             this.databaseNameLabel.Size = new System.Drawing.Size(87, 13);
             this.databaseNameLabel.TabIndex = 10;
@@ -130,7 +132,7 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(211, 219);
+            this.okButton.Location = new System.Drawing.Point(211, 285);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 11;
@@ -140,7 +142,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(292, 219);
+            this.cancelButton.Location = new System.Drawing.Point(292, 285);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 12;
@@ -148,11 +150,33 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // getDatabasesButton
+            // 
+            this.getDatabasesButton.Location = new System.Drawing.Point(272, 176);
+            this.getDatabasesButton.Name = "getDatabasesButton";
+            this.getDatabasesButton.Size = new System.Drawing.Size(95, 23);
+            this.getDatabasesButton.TabIndex = 13;
+            this.getDatabasesButton.Text = "Get Databases";
+            this.getDatabasesButton.UseVisualStyleBackColor = true;
+            this.getDatabasesButton.Click += new System.EventHandler(this.getDatabasesButton_Click);
+            // 
+            // testConnectionButton
+            // 
+            this.testConnectionButton.Location = new System.Drawing.Point(272, 249);
+            this.testConnectionButton.Name = "testConnectionButton";
+            this.testConnectionButton.Size = new System.Drawing.Size(95, 23);
+            this.testConnectionButton.TabIndex = 14;
+            this.testConnectionButton.Text = "Test Connection";
+            this.testConnectionButton.UseVisualStyleBackColor = true;
+            this.testConnectionButton.Click += new System.EventHandler(this.testConnectionButton_Click);
+            // 
             // ConnectionStringManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 254);
+            this.ClientSize = new System.Drawing.Size(395, 328);
+            this.Controls.Add(this.testConnectionButton);
+            this.Controls.Add(this.getDatabasesButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.databaseNameLabel);
@@ -187,5 +211,7 @@
         private System.Windows.Forms.Label databaseNameLabel;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button getDatabasesButton;
+        private System.Windows.Forms.Button testConnectionButton;
     }
 }

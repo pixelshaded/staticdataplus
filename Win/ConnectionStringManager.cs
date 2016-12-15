@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -19,7 +21,8 @@ namespace StaticGenerator
             { AuthenticationType.SqlServerAuthentication, "Sql Server Authentication" }
         };
 
-        private AuthenticationType InitialAuthenticationType = AuthenticationType.WindowsAuthentication;
+        private readonly AuthenticationType InitialAuthenticationType = AuthenticationType.WindowsAuthentication;
+        private const string DatabaseNameQuery = "SELECT name FROM master.sys.databases ORDER BY name";
 
         public ConnectionStringManager()
         {
@@ -31,6 +34,7 @@ namespace StaticGenerator
                 authenticationComboBox.Items.Add(_authenticationTitleMap[authType]);
             }
             authenticationComboBox.SelectedIndex = (int) InitialAuthenticationType;
+            testConnectionButton.Enabled = false;
         }
 
         private void ConnectionStringManager_Load(object sender, EventArgs e)
@@ -61,6 +65,44 @@ namespace StaticGenerator
         private void cancelButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void getDatabasesButton_Click(object sender, EventArgs e)
+        {
+            var connString = string.Format("Server={0};Integrated Security=SSPI", serverNameTextBox.Text);
+            var databases = new List<string>();
+            databaseNameComboBox.Items.Clear();
+
+            using (var connection = new SqlConnection(connString))
+            {
+                var command = new SqlCommand(DatabaseNameQuery, connection);
+                connection.Open();
+
+                var dataReader = command.ExecuteReader(CommandBehavior.Default);
+
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                        databases.Add(dataReader.GetString(0));
+                    }
+                }
+
+                dataReader.Close();
+            }
+
+            if (databases.Count > 0)
+            {
+                databaseNameComboBox.Items.AddRange(databases.ToArray());
+                databaseNameComboBox.SelectedIndex = 0;
+            }
+
+            testConnectionButton.Enabled = databaseNameComboBox.Items.Count > 0;
+        }
+
+        private void testConnectionButton_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
