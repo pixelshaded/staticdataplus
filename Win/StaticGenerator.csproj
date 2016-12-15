@@ -84,11 +84,11 @@
     <Compile Include="..\SolutionInfo.cs">
       <Link>SolutionInfo.cs</Link>
     </Compile>
-    <Compile Include="ConnectionStringManager.cs">
+    <Compile Include="ConnectionStringCreator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConnectionStringManager.Designer.cs">
-      <DependentUpon>ConnectionStringManager.cs</DependentUpon>
+    <Compile Include="ConnectionStringCreator.Designer.cs">
+      <DependentUpon>ConnectionStringCreator.cs</DependentUpon>
     </Compile>
     <Compile Include="frmGenerate.cs">
       <SubType>Form</SubType>
@@ -96,6 +96,7 @@
     <Compile Include="frmGenerate.Designer.cs">
       <DependentUpon>frmGenerate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\AuthenticationMetaData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -103,8 +104,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ConnectionStringManager.resx">
-      <DependentUpon>ConnectionStringManager.cs</DependentUpon>
+    <EmbeddedResource Include="ConnectionStringCreator.resx">
+      <DependentUpon>ConnectionStringCreator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGenerate.resx">
       <SubType>Designer</SubType>

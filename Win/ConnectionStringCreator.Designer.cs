@@ -1,6 +1,6 @@
 ﻿namespace StaticGenerator
 {
-    partial class ConnectionStringManager
+    partial class ConnectionStringCreator
     {
         /// <summary>
         /// Required designer variable.
@@ -41,11 +41,14 @@
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.getDatabasesButton = new System.Windows.Forms.Button();
-            this.testConnectionButton = new System.Windows.Forms.Button();
+            this.connectionStringLabel = new System.Windows.Forms.Label();
+            this.connectionStringOutputLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // serverNameTextBox
             // 
+            this.serverNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.serverNameTextBox.Location = new System.Drawing.Point(127, 22);
             this.serverNameTextBox.Name = "serverNameTextBox";
             this.serverNameTextBox.Size = new System.Drawing.Size(240, 20);
@@ -71,6 +74,8 @@
             // 
             // authenticationComboBox
             // 
+            this.authenticationComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.authenticationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.authenticationComboBox.FormattingEnabled = true;
             this.authenticationComboBox.Location = new System.Drawing.Point(127, 61);
@@ -90,6 +95,8 @@
             // 
             // userNameTextBox
             // 
+            this.userNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.userNameTextBox.Location = new System.Drawing.Point(127, 103);
             this.userNameTextBox.Name = "userNameTextBox";
             this.userNameTextBox.Size = new System.Drawing.Size(240, 20);
@@ -106,6 +113,8 @@
             // 
             // passwordTextBox
             // 
+            this.passwordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.passwordTextBox.Location = new System.Drawing.Point(127, 141);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
@@ -114,12 +123,15 @@
             // 
             // databaseNameComboBox
             // 
+            this.databaseNameComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.databaseNameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.databaseNameComboBox.FormattingEnabled = true;
             this.databaseNameComboBox.Location = new System.Drawing.Point(127, 214);
             this.databaseNameComboBox.Name = "databaseNameComboBox";
             this.databaseNameComboBox.Size = new System.Drawing.Size(240, 21);
             this.databaseNameComboBox.TabIndex = 9;
+            this.databaseNameComboBox.SelectedIndexChanged += new System.EventHandler(this.databaseNameComboBox_SelectedIndexChanged);
             // 
             // databaseNameLabel
             // 
@@ -132,17 +144,19 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(211, 285);
+            this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.okButton.Location = new System.Drawing.Point(211, 296);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 11;
-            this.okButton.Text = "OK";
+            this.okButton.Text = "Add";
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(292, 285);
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.Location = new System.Drawing.Point(292, 296);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 12;
@@ -152,6 +166,7 @@
             // 
             // getDatabasesButton
             // 
+            this.getDatabasesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.getDatabasesButton.Location = new System.Drawing.Point(272, 176);
             this.getDatabasesButton.Name = "getDatabasesButton";
             this.getDatabasesButton.Size = new System.Drawing.Size(95, 23);
@@ -160,22 +175,34 @@
             this.getDatabasesButton.UseVisualStyleBackColor = true;
             this.getDatabasesButton.Click += new System.EventHandler(this.getDatabasesButton_Click);
             // 
-            // testConnectionButton
+            // connectionStringLabel
             // 
-            this.testConnectionButton.Location = new System.Drawing.Point(272, 249);
-            this.testConnectionButton.Name = "testConnectionButton";
-            this.testConnectionButton.Size = new System.Drawing.Size(95, 23);
-            this.testConnectionButton.TabIndex = 14;
-            this.testConnectionButton.Text = "Test Connection";
-            this.testConnectionButton.UseVisualStyleBackColor = true;
-            this.testConnectionButton.Click += new System.EventHandler(this.testConnectionButton_Click);
+            this.connectionStringLabel.AutoSize = true;
+            this.connectionStringLabel.Location = new System.Drawing.Point(22, 256);
+            this.connectionStringLabel.Name = "connectionStringLabel";
+            this.connectionStringLabel.Size = new System.Drawing.Size(94, 13);
+            this.connectionStringLabel.TabIndex = 15;
+            this.connectionStringLabel.Text = "Connection String:";
             // 
-            // ConnectionStringManager
+            // connectionStringOutputLabel
+            // 
+            this.connectionStringOutputLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.connectionStringOutputLabel.AutoEllipsis = true;
+            this.connectionStringOutputLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.connectionStringOutputLabel.Location = new System.Drawing.Point(124, 256);
+            this.connectionStringOutputLabel.Name = "connectionStringOutputLabel";
+            this.connectionStringOutputLabel.Size = new System.Drawing.Size(243, 13);
+            this.connectionStringOutputLabel.TabIndex = 16;
+            this.connectionStringOutputLabel.Text = "Connection String Output";
+            // 
+            // ConnectionStringCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 328);
-            this.Controls.Add(this.testConnectionButton);
+            this.ClientSize = new System.Drawing.Size(395, 339);
+            this.Controls.Add(this.connectionStringOutputLabel);
+            this.Controls.Add(this.connectionStringLabel);
             this.Controls.Add(this.getDatabasesButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
@@ -189,8 +216,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.serverNameLabel);
             this.Controls.Add(this.serverNameTextBox);
-            this.Name = "ConnectionStringManager";
-            this.Text = "Connection String Manager";
+            this.Name = "ConnectionStringCreator";
+            this.Text = "Connection String Creator";
             this.Load += new System.EventHandler(this.ConnectionStringManager_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -212,6 +239,7 @@
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button getDatabasesButton;
-        private System.Windows.Forms.Button testConnectionButton;
+        private System.Windows.Forms.Label connectionStringLabel;
+        private System.Windows.Forms.Label connectionStringOutputLabel;
     }
 }

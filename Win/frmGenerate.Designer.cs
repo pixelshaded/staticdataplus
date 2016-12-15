@@ -190,7 +190,7 @@ namespace StaticGenerator
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(75, 23);
             this.editButton.TabIndex = 14;
-            this.editButton.Text = "Edit...";
+            this.editButton.Text = "Add...";
             this.editButton.UseVisualStyleBackColor = true;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
